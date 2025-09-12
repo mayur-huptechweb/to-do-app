@@ -2,7 +2,7 @@ const App = () => {
 
   return (
     <>
-      app
+      App
     </>
   );
 };

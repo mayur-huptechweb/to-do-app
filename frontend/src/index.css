@@ -1,7 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-
 @custom-variant dark (&:is(.dark *));
+
+* {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);

@@ -144,6 +144,8 @@ const App = () => {
             setSearch={setSearch}
             visibleColumns={visibleColumns}
             setVisibleColumns={setVisibleColumns}
+            tasks={tasks}
+            setTasks={setTasks}
           />
 
           <TasksTable

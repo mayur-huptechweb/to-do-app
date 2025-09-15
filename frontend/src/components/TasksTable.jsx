@@ -61,10 +61,10 @@ const TasksTable = ({
         <tbody className="bg-white divide-y divide-gray-200">
           {tasks.length > 0 ? (
             tasks.map((task) => (
-              <tr key={task.id} className="">
+              <tr key={task._id}>
                 {visibleColumns.no && (
                   <td className="px-6 py-4 truncate whitespace-nowrap font-medium">
-                    {task.id}
+                    {task._id.slice(-4)} {/* shorter ID just for display */}
                   </td>
                 )}
                 {visibleColumns.title && (
@@ -116,7 +116,7 @@ const TasksTable = ({
                     <Button
                       size="icon"
                       variant="outline"
-                      onClick={() => handleToggleStatus(task.id)}
+                      onClick={() => handleToggleStatus(task._id, task.status)}
                     >
                       {task.status === "Pending" ? (
                         <CheckCircle className="h-4 w-4 text-green-600" />
@@ -134,7 +134,7 @@ const TasksTable = ({
                     <Button
                       size="icon"
                       variant="destructive"
-                      onClick={() => handleDelete(task.id)}
+                      onClick={() => handleDelete(task._id)}
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>

@@ -59,7 +59,7 @@ export const loginUser = async (req, res) => {
 };
 
 // @desc    Get current user profile
-// @route   GET /api/users/profile
+// @route   GET /api/auth/profile
 // @access  Private
 export const getUserProfile = async (req, res) => {
   if (!req.user) return res.status(401).json({ message: "User not found" });

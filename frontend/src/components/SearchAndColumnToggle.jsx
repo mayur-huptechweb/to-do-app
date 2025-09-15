@@ -134,7 +134,7 @@ const SearchAndColumnToggle = ({
 
       {/* Add Task Modal */}
       <Dialog open={addTaskOpen} onOpenChange={() => setAddTaskOpen(false)}>
-        <DialogOverlay className="fixed inset-0 bg-black/10 backdrop-blur-xs" />
+        <DialogOverlay className="fixed inset-0 bg-transparent backdrop-blur-xs" />
         <DialogContent
           className="sm:max-w-lg space-y-4 mb-0"
           showCloseButton={false}

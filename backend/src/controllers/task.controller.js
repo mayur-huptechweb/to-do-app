@@ -50,23 +50,18 @@ export const getTaskById = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-
-// @desc    Update task
+// @desc    Toggle task status
 // @route   PUT /api/tasks/:id
 // @access  Private
 export const updateTask = async (req, res) => {
-  const { title, description, priority, status } = req.body;
-
   try {
     const task = await Task.findById(req.params.id);
+
     if (!task || task.user.toString() !== req.user._id.toString()) {
       return res.status(404).json({ message: "Task not found" });
     }
 
-    task.title = title || task.title;
-    task.description = description || task.description;
-    task.priority = priority || task.priority;
-    task.status = status || task.status;
+    task.status = task.status === "pending" ? "completed" : "pending";
 
     const updatedTask = await task.save();
     res.json(updatedTask);
@@ -75,17 +70,19 @@ export const updateTask = async (req, res) => {
   }
 };
 
+
 // @desc    Delete task
 // @route   DELETE /api/tasks/:id
 // @access  Private
 export const deleteTask = async (req, res) => {
   try {
     const task = await Task.findById(req.params.id);
+
     if (!task || task.user.toString() !== req.user._id.toString()) {
       return res.status(404).json({ message: "Task not found" });
     }
 
-    await task.remove();
+    await task.deleteOne(); 
     res.json({ message: "Task removed" });
   } catch (error) {
     res.status(500).json({ message: error.message });

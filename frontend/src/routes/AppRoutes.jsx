@@ -6,7 +6,7 @@ import NotFound from "@/pages/404";
 import { Toaster } from "sonner";
 import { AuthProvider } from "@/context/AuthContext";
 import PrivateRoute from "@/routes/PrivateRoute";
-import PublicRoute from "@/routes/PublicRoute"; // ✅ new
+import PublicRoute from "@/routes/PublicRoute"; 
 
 function AppRoutes() {
   return (
